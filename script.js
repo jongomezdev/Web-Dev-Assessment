@@ -12,3 +12,15 @@ let time = 60;
 let randQuestions = "";
 let currentQuestion = "";
 let soundFX = new Audio("");
+
+startButton.addEventListener("click", startGame);
+
+function setTime() {}
+
+function startGame() {}
+
+function getNewQuestion() {}
+
+function showQuestion() {}
+
+function resetQuestion() {}
