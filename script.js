@@ -15,12 +15,29 @@ let soundFX = new Audio("");
 
 startButton.addEventListener("click", startGame);
 
-function setTime() {}
+// **************** Set Timer *******************
+function setTime() {
+  let timerInterval = setInterval(() => {
+    time--;
+    timer.textContent = `Timer: ${time}`;
 
+    if (time === 0) {
+      clearInterval(timerInterval);
+      alert("Out of Time");
+    }
+  });
+}
+
+// **************** Start Game *******************
 function startGame() {}
 
+// **************** Get New Question *******************
 function getNewQuestion() {}
 
+// **************** Show New Question *******************
 function showQuestion() {}
 
+// **************** Reset States *******************
 function resetQuestion() {}
+
+function endGame() {}
