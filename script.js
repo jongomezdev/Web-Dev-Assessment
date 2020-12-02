@@ -8,8 +8,7 @@ const messageDiv = document.querySelector("#message");
 
 // **************** Declare Variables *******************
 let score = 0;
-let time = 60;
-let randQuestions = "";
+let time = 0;
 let currentQuestion = "";
 let soundFX = new Audio("");
 
@@ -24,8 +23,13 @@ function setTime() {
     if (time === 0) {
       clearInterval(timerInterval);
       alert("Out of Time");
+
+      if (currentQuestion < questions.length - 1) {
+        endGame();
+      }
     }
-  });
+  }, 1000);
+  return score;
 }
 
 // **************** Start Game *******************
@@ -41,3 +45,16 @@ function showQuestion() {}
 function resetQuestion() {}
 
 function endGame() {}
+
+const questions = [
+  {
+    question: "How do you create a function in JavaScript",
+    choices: [
+      "function myFunction()",
+      "function myFunction()",
+      "function myFunction()",
+      "function myFunction()",
+    ],
+    answer: "function myFunction()",
+  },
+];
