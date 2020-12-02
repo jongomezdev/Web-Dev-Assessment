@@ -9,12 +9,7 @@ body {
   color: #fff;
 }
 
-.container {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#buttonDiv {
 }
 
 .btn-info,
@@ -41,4 +36,43 @@ body {
   box-shadow: 0 0.4rem 1.4rem 0 rgba(8, 114, 244, 0.6);
   transition: transform 150ms;
   transform: scale(1.03);
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#game-div {
+  text-align: center;
+}
+
+#highscore-link {
+  color: #fecd1a;
+  font-family: "Press Start 2P", cursive;
+}
+
+#hsText {
+  color: #fecd1a;
+  font-family: "Press Start 2P", cursive;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#start-btn {
+  background-color: #e94560;
+  text-align: center;
+}
+
+#time {
+  color: #fecd1a;
+  font-family: "Press Start 2P", cursive;
+}
+
+#question {
+  text-align: center;
 }

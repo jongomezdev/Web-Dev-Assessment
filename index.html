@@ -26,10 +26,10 @@
     </nav>
     <div class="container">
       <div class="row">
-        <div class="col-md-12 col-lg-10">
+        <div class="col-md-12 col-lg-10" id="game-div">
           <div id="question-container" class="hide">
-            <div id="question">Question</div>
-            <div id="answer-buttons" class="btn-grid">
+            <h1 id="question">Question</h1>
+            <div id="answer-buttons">
               <button class="btn btn-info">Answer 1</button>
               <button class="btn btn-info">Answer 2</button>
               <button class="btn btn-info">Answer 3</button>
@@ -43,11 +43,12 @@
                 time!
               </p>
             </div>
-          </div>
-          <div class="col-sm-8 col-md-6" id="buttonDiv">
-            <button type="button" class="btn btn-success" id="start-btn">
-              Start Quiz
-            </button>
+
+            <div class="col-xs col-sm-8 col-md-6" id="buttonDiv">
+              <button type="button" class="btn btn-success" id="start-btn">
+                Start Quiz
+              </button>
+            </div>
           </div>
         </div>
       </div>
