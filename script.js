@@ -1,7 +1,7 @@
 // *************** Grab DOM Elements ****************
 const startButton = document.getElementById("start-btn");
 const questionContainer = document.getElementById("question-container");
-const questionEl = document.getElementById("question");
+const questionEl = document.getElementById("questionText");
 const answerButtonsEl = document.getElementById("answer-buttons");
 const timer = document.querySelector("#time");
 const messageDiv = document.querySelector("#message");
@@ -9,6 +9,7 @@ const messageDiv = document.querySelector("#message");
 // **************** Declare Variables *******************
 let score = 0;
 let time = 0;
+let randQuestion = "";
 let currentQuestion = "";
 let soundFX = new Audio("");
 
@@ -33,13 +34,23 @@ function setTime() {
 }
 
 // **************** Start Game *******************
-function startGame() {}
+function startGame() {
+  startButton.classList.add("hide");
+  randQuestion = questions.sort(() => Math.random() - 0.5);
+  currentQuestion = 0;
+  questionContainer.classList.remove("hide");
+  getNewQuestion();
+}
+
+// **************** Show Question *******************
+function showQuestion() {
+  getNewQuestion();
+}
 
 // **************** Get New Question *******************
-function getNewQuestion() {}
-
-// **************** Show New Question *******************
-function showQuestion() {}
+function getNewQuestion() {
+  questionText.textContent = questions[currentQuestion].question;
+}
 
 // **************** Reset States *******************
 function resetQuestion() {}
