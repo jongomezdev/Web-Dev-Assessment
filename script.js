@@ -68,7 +68,31 @@ function showQuestion() {
 }
 
 // ************ Select Answer Function *****************
-function selectAnswer() {}
+function selectAnswer(answer) {
+  if (
+    questions[questionIndex].answer === questions[questionIndex].choices[answer]
+  ) {
+    messageDiv.textContent = "Correct!";
+  } else {
+    messageDiv.textContent = "Incorrect!";
+    time -= 10;
+  }
+  questionIndex++;
+  showNextQuestion();
+}
+
+function choice0() {
+  selectAnswer(0);
+}
+function choice1() {
+  selectAnswer(1);
+}
+function choice2() {
+  selectAnswer(2);
+}
+function choice3() {
+  selectAnswer(3);
+}
 
 // **************** Reset States *******************
 function resetQuestion() {}
@@ -80,22 +104,16 @@ answer2.hidden = true;
 answer3.hidden = true;
 answer4.hidden = true;
 
+// ************** Event Listeners ***************
 startButton.addEventListener("click", showQuestion);
 startButton.addEventListener("click", setTime);
 startButton.addEventListener("click", () => {
   messageDiv.textContent = "";
 });
-
-// answer1.addEventListener("click", () => {
-//   if (questions[questionIndex].choices[0] === questions[questionIndex].answer) {
-//     messageDiv.textContent = "Correct!";
-//   } else {
-//     messageDiv.textContent = "Wrong!";
-//     time -= 5;
-//   }
-//   questionIndex++;
-//   showNextQuestion();
-// });
+answer1.addEventListener("click", choice0);
+answer2.addEventListener("click", choice1);
+answer3.addEventListener("click", choice2);
+answer4.addEventListener("click", choice3);
 
 // ************************* Questions ***********************
 const questions = [
