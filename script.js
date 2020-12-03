@@ -1,16 +1,19 @@
 // *************** Grab DOM Elements ****************
 const startBtn = document.getElementById("startButton");
+const answer1 = document.getElementById("answer1");
+const answer2 = document.getElementById("answer2");
+const answer3 = document.getElementById("answer3");
+const answer4 = document.getElementById("answer4");
 const questionText = document.getElementById("questionText");
 const gameContainer = document.getElementById("game-div");
-const answerButtons = document.getElementById("answers");
 const timer = document.querySelector("#time");
 const messageDiv = document.querySelector("#message");
 
 // **************** Declare Variables *******************
 let score = 0;
-let time = 60;
+let time = 120;
 let randQuestion = "";
-let currentQuestionIndex = 0;
+let questionIndex = 0;
 let soundFX = new Audio("");
 
 startButton.addEventListener("click", startGame);
@@ -25,7 +28,7 @@ function setTime() {
       clearInterval(timerInterval);
       alert("You ran out of time!");
       // endGame();
-    } else if (currentQuestionIndex === questions.length) {
+    } else if (questionIndex === questions.length) {
       clearInterval(timerInterval);
     }
   }, 1000);
@@ -34,27 +37,27 @@ function setTime() {
 
 // **************** Start Game *******************
 function startGame() {
-  startBtn.classList.add("hide");
   randQuestion = questions.sort(() => Math.random() - 0.5);
-  currentQuestionIndex = 0;
+  questionIndex = 0;
   showNextQuestion();
 }
 
 // **************** Show Question *******************
 function showNextQuestion() {
-  showQuestion(randQuestion[currentQuestionIndex]);
+  showQuestion(randQuestion[questionIndex]);
 }
 
 // **************** Get New Question *******************
 function showQuestion() {
-  if (currentQuestionIndex === questions.length) {
+  startButton.classList.add("hide");
+  if (questionIndex === questions.length) {
     // endGame();
   } else {
-    questionText.innerText = questions[currentQuestionIndex].question;
-    answers.textContent = questions[currentQuestionIndex].choices[0];
-    answers.textContent = questions[currentQuestionIndex].choices[1];
-    answers.textContent = questions[currentQuestionIndex].choices[2];
-    answers.textContent = questions[currentQuestionIndex].choices[3];
+    questionText.innerText = questions[questionIndex].question;
+    answer1.textContent = questions[questionIndex]["choices"][0];
+    answer2.textContent = questions[questionIndex]["choices"][1];
+    answer3.textContent = questions[questionIndex]["choices"][2];
+    answer4.textContent = questions[questionIndex]["choices"][3];
   }
 }
 
@@ -66,13 +69,27 @@ function resetQuestion() {}
 
 function endGame() {}
 
+answer1.hidden = true;
+answer2.hidden = true;
+answer3.hidden = true;
+answer4.hidden = true;
+
 startButton.addEventListener("click", showQuestion);
 startButton.addEventListener("click", setTime);
 startButton.addEventListener("click", () => {
   messageDiv.textContent = "";
 });
 
-answerButtons.hidden = true;
+answer1.addEventListener("click", () => {
+  if (questions[questionIndex].choices[0] === [questionIndex].answer) {
+    messageDiv.textContent = "Correct!";
+  } else {
+    messageDiv.textContent = "Wrong!";
+    time -= 5;
+  }
+  questionIndex++;
+  showNextQuestion();
+});
 
 // ************************* Questions ***********************
 const questions = [
