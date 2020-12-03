@@ -4,6 +4,7 @@ const answer1 = document.getElementById("answer1");
 const answer2 = document.getElementById("answer2");
 const answer3 = document.getElementById("answer3");
 const answer4 = document.getElementById("answer4");
+const answers = document.getElementById("answers");
 const questionText = document.getElementById("questionText");
 const gameContainer = document.getElementById("game-div");
 const timer = document.querySelector("#time");
@@ -49,6 +50,11 @@ function showNextQuestion() {
 
 // **************** Get New Question *******************
 function showQuestion() {
+  answer1.hidden = false;
+  answer2.hidden = false;
+  answer3.hidden = false;
+  answer4.hidden = false;
+
   startButton.classList.add("hide");
   if (questionIndex === questions.length) {
     // endGame();
@@ -80,16 +86,16 @@ startButton.addEventListener("click", () => {
   messageDiv.textContent = "";
 });
 
-answer1.addEventListener("click", () => {
-  if (questions[questionIndex].choices[0] === [questionIndex].answer) {
-    messageDiv.textContent = "Correct!";
-  } else {
-    messageDiv.textContent = "Wrong!";
-    time -= 5;
-  }
-  questionIndex++;
-  showNextQuestion();
-});
+// answer1.addEventListener("click", () => {
+//   if (questions[questionIndex].choices[0] === questions[questionIndex].answer) {
+//     messageDiv.textContent = "Correct!";
+//   } else {
+//     messageDiv.textContent = "Wrong!";
+//     time -= 5;
+//   }
+//   questionIndex++;
+//   showNextQuestion();
+// });
 
 // ************************* Questions ***********************
 const questions = [
