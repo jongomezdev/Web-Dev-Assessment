@@ -29,12 +29,12 @@ function setTime() {
     if (time === 0) {
       clearInterval(timerInterval);
       alert("You ran out of time!");
-      // endGame();
+      endGame();
     } else if (questionIndex === questions.length) {
       clearInterval(timerInterval);
     }
   }, 1000);
-  // return score;
+  return score;
 }
 
 // **************** Start Game *******************
@@ -58,7 +58,7 @@ function showQuestion() {
 
   startButton.classList.add("hide");
   if (questionIndex === questions.length) {
-    // endGame();
+    endGame();
   } else {
     questionText.innerText = questions[questionIndex].question;
     answer1.textContent = questions[questionIndex]["choices"][0];
@@ -101,7 +101,13 @@ function choice3() {
 }
 
 // **************** End Game Function ********************
-function endGame() {}
+function endGame() {
+  score += 100;
+
+  answers.classList.add("hide");
+  messageDiv.classList.add("hide");
+  questionText.textContent = "Game Over";
+}
 
 // Add Boolean globally to hide the answer buttons on page load
 answer1.hidden = true;
