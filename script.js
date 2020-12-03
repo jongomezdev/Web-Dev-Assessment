@@ -44,7 +44,7 @@ function startGame() {
   showNextQuestion();
 }
 
-// **************** Show Question *******************
+// **************** Show Next Question *******************
 function showNextQuestion() {
   showQuestion(randQuestion[questionIndex]);
 }

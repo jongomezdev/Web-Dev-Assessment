@@ -45,6 +45,14 @@ body {
   align-items: center;
 }
 
+.fa-code {
+  margin-left: 10px;
+}
+.fa-play {
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+
 #game-div {
   text-align: -webkit-center;
 }
