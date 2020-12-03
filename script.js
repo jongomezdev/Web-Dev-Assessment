@@ -74,6 +74,8 @@ function selectAnswer(answer) {
     questions[questionIndex].answer === questions[questionIndex].choices[answer]
   ) {
     messageDiv.textContent = "Correct!";
+    score++;
+    console.log(score);
     correctSound.play();
   } else {
     messageDiv.textContent = "Incorrect!";
@@ -84,6 +86,7 @@ function selectAnswer(answer) {
   showNextQuestion();
 }
 
+// Functions to pass in as values in the selectAnswer argument
 function choice0() {
   selectAnswer(0);
 }
@@ -97,8 +100,10 @@ function choice3() {
   selectAnswer(3);
 }
 
+// **************** End Game Function ********************
 function endGame() {}
 
+// Add Boolean globally to hide the answer buttons on page load
 answer1.hidden = true;
 answer2.hidden = true;
 answer3.hidden = true;
@@ -158,7 +163,7 @@ const questions = [
     answer: "alert('Hello World')",
   },
   {
-    title: "Arrays in JavaScript can be used to store______",
+    question: "Arrays in JavaScript can be used to store______",
     choices: [
       "Numbers and strings",
       "Other arrays",
