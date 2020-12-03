@@ -15,7 +15,8 @@ let score = 0;
 let time = 120;
 let randQuestion = "";
 let questionIndex = 0;
-let soundFX = new Audio("");
+let correctSound = new Audio("sounds/green.mp3");
+let incorrectSound = new Audio("sounds/red.mp3");
 
 startButton.addEventListener("click", startGame);
 
@@ -73,9 +74,11 @@ function selectAnswer(answer) {
     questions[questionIndex].answer === questions[questionIndex].choices[answer]
   ) {
     messageDiv.textContent = "Correct!";
+    correctSound.play();
   } else {
     messageDiv.textContent = "Incorrect!";
     time -= 10;
+    incorrectSound.play();
   }
   questionIndex++;
   showNextQuestion();
