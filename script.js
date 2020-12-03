@@ -97,9 +97,6 @@ function choice3() {
   selectAnswer(3);
 }
 
-// **************** Reset States *******************
-function resetQuestion() {}
-
 function endGame() {}
 
 answer1.hidden = true;
@@ -134,5 +131,40 @@ const questions = [
     question: "Which event occurs when the user clicks on an HTML element?",
     choices: ["onmouseclick", "onchange", "onclick", "onmouseover"],
     answer: "onclick",
+  },
+  {
+    question: "What does CSS stand for?",
+    choices: [
+      "Colorful Style Sheets",
+      "Creative Style Sheets",
+      "Computer Style Sheets",
+      "Cascading Style Sheets",
+    ],
+    answer: "Cascading Style Sheets",
+  },
+  {
+    question: "How can you make a bulleted list in HTML?",
+    choices: ["<ol>", "<ul>", "<dl>", "<list>"],
+    answer: "<ul>",
+  },
+  {
+    question: "How do you write 'Hello World' in an alert box?",
+    choices: [
+      "alert('Hello World')",
+      "msg('Hello World')",
+      "msgBox('Hello World')",
+      "alertBox('Hello World')",
+    ],
+    answer: "alert('Hello World')",
+  },
+  {
+    title: "Arrays in JavaScript can be used to store______",
+    choices: [
+      "Numbers and strings",
+      "Other arrays",
+      "Booleans",
+      "All of the above",
+    ],
+    answer: "All of the above",
   },
 ];
