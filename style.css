@@ -49,6 +49,10 @@ body {
   text-align: -webkit-center;
 }
 
+.hide {
+  display: none;
+}
+
 #highscore-link {
   color: #fecd1a;
   font-family: "Press Start 2P", cursive;

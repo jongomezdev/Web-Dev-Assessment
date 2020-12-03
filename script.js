@@ -8,7 +8,7 @@ const messageDiv = document.querySelector("#message");
 
 // **************** Declare Variables *******************
 let score = 0;
-let time = 0;
+let time = 60;
 let randQuestion = "";
 let currentQuestionIndex = 0;
 let soundFX = new Audio("");
@@ -57,7 +57,6 @@ function showQuestion() {
     answers.textContent = questions[currentQuestionIndex].choices[3];
   }
 }
-// answerButtons.addEventListener("click");
 
 // ************ Select Answer Function *****************
 function selectAnswer() {}
@@ -66,6 +65,14 @@ function selectAnswer() {}
 function resetQuestion() {}
 
 function endGame() {}
+
+startButton.addEventListener("click", showQuestion);
+startButton.addEventListener("click", setTime);
+startButton.addEventListener("click", () => {
+  messageDiv.textContent = "";
+});
+
+answerButtons.hidden = true;
 
 // ************************* Questions ***********************
 const questions = [
