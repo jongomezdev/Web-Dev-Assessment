@@ -12,7 +12,7 @@ const messageDiv = document.querySelector("#message");
 
 // **************** Declare Variables *******************
 let score = 0;
-let time = 120;
+let time = 60;
 let randQuestion = "";
 let questionIndex = 0;
 let correctSound = new Audio("sounds/green.mp3");
@@ -51,10 +51,7 @@ function showNextQuestion() {
 
 // **************** Get New Question *******************
 function showQuestion() {
-  answer1.hidden = false;
-  answer2.hidden = false;
-  answer3.hidden = false;
-  answer4.hidden = false;
+  answers.hidden = false;
 
   startButton.classList.add("hide");
   if (questionIndex === questions.length) {
@@ -74,11 +71,12 @@ function selectAnswer(answer) {
     questions[questionIndex].answer === questions[questionIndex].choices[answer]
   ) {
     messageDiv.textContent = "Correct!";
-    score++;
+    score += 20;
     console.log(score);
     correctSound.play();
   } else {
     messageDiv.textContent = "Incorrect!";
+    score -= 20;
     time -= 10;
     incorrectSound.play();
   }
@@ -102,7 +100,7 @@ function choice3() {
 
 // **************** End Game Function ********************
 function endGame() {
-  score += 100;
+  score += 20;
 
   answers.classList.add("hide");
   messageDiv.classList.add("hide");
@@ -110,10 +108,7 @@ function endGame() {
 }
 
 // Add Boolean globally to hide the answer buttons on page load
-answer1.hidden = true;
-answer2.hidden = true;
-answer3.hidden = true;
-answer4.hidden = true;
+answers.hidden = true;
 
 // ************** Event Listeners ***************
 startButton.addEventListener("click", showQuestion);
