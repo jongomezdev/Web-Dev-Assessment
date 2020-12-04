@@ -15,6 +15,8 @@ let score = 0;
 let time = 60;
 let randQuestion = "";
 let questionIndex = 0;
+let savedScores;
+let scoreList = [];
 let correctSound = new Audio("sounds/green.mp3");
 let incorrectSound = new Audio("sounds/red.mp3");
 
@@ -51,7 +53,10 @@ function showNextQuestion() {
 
 // **************** Get New Question *******************
 function showQuestion() {
-  answers.hidden = false;
+  answer1.hidden = false;
+  answer2.hidden = false;
+  answer3.hidden = false;
+  answer4.hidden = false;
 
   startButton.classList.add("hide");
   if (questionIndex === questions.length) {
@@ -100,50 +105,57 @@ function choice3() {
 
 // **************** End Game Function ********************
 function endGame() {
-  let scoreEl = document.createElement("h1");
-  let inputEl = document.createElement("input");
-  let submitBtn = document.createElement("button");
+  let scoreTag = document.createElement("h1");
+  let inputTag = document.createElement("input");
+  let submitButton = document.createElement("button");
 
   score += 20;
 
-  answers.classList.add("hide");
   messageDiv.classList.add("hide");
   questionText.textContent = "Game Over";
 
-  document.body.children[1].appendChild(scoreEl);
+  answer1.remove();
+  answer2.remove();
+  answer3.remove();
+  answer4.remove();
+
+  document.body.children[1].appendChild(scoreTag);
   document.getElementsByTagName("h1")[0].setAttribute("id", "score");
   document.getElementById("score").textContent = `Your score is: ${score}`;
-  document.body.children[1].appendChild(inputEl);
+  document.body.children[1].appendChild(inputTag);
   document.getElementsByTagName("input")[0].setAttribute("id", "input-field");
 
-  document.body.children[1].appendChild(submitBtn);
-  submitBtn.textContent = "Submit";
+  submitButton.textContent = "Submit";
+  document.body.children[1].appendChild(submitButton);
   document.getElementsByTagName("button")[0].setAttribute("id", "btn");
-  submitBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    let finalScore = new Object();
-    finalScore.name = inputEl.value.trim();
-    finalScore.newScore = score;
-    savedScores(finalScore);
+  submitButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    let highScoreText = new Object();
+    highScoreText.name = inputTag.value.trim();
+    highScoreText.newScore = score;
+    storeScores(highScoreText);
     window.location.href = "highScores.html";
   });
 }
 
 // ***************** local storage function ***************
 
-function savedScores(finalScore) {
-  scoreArr = JSON.parse(localStorage.getItem("scores"));
-  if (scoreArr === null) {
-    scoreList.push(finalScore);
+function storeScores(highScoreText) {
+  tempArray = JSON.parse(localStorage.getItem("scores"));
+  if (tempArray === null) {
+    scoreList.push(highScoreText);
     localStorage.setItem("scores", JSON.stringify(scoreList));
   } else {
-    scoreArr.push(finalScore);
-    localStorage.setItem("scores", JSON.stringify(scoreArr));
+    tempArray.push(highScoreText);
+    localStorage.setItem("scores", JSON.stringify(tempArray));
   }
 }
 
 // Add Boolean globally to hide the answer buttons on page load
-answers.hidden = true;
+answer1.hidden = true;
+answer2.hidden = true;
+answer3.hidden = true;
+answer4.hidden = true;
 
 // ************** Event Listeners ***************
 startButton.addEventListener("click", showQuestion);

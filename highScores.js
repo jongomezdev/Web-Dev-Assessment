@@ -1,38 +1,51 @@
 // *************** Grab DOM Elements ***************
-const highScoreList = document.getElementById("highScores");
-const clearScores = document.getElementById("clear-scores");
+let highScoreList = document.querySelector("highScores");
+let clearScores = document.querySelector("#clear-highscores");
 
 // ************* show scores function *****************
+runScores();
+
 function runScores() {
-  savedScores = JSON.parse(localStorage.getItem("scores"));
-  if (savedScores !== null) {
-    scoreList = savedScores;
+  storedScores = JSON.parse(localStorage.getItem("scores"));
+
+  if (storedScores !== null) {
+    scoreList = storedScores;
   }
-  showScores();
+  renderScores();
 }
 
-function showScores() {
-  if (savedScores !== null) {
+function clearAll() {
+  window.localStorage.clear();
+}
+
+function renderScores() {
+  if (storedScores !== null) {
     scoreList.sort((a, b) => {
       return a.newScore - b.newScore;
     });
     scoreList.reverse((a, b) => {
       return a.newScore - b.newScore;
     });
+
     for (i = 0; i < scoreList.length; i++) {
       let scoreListItem = scoreList[i];
       let tr = document.createElement("tr");
-      let cellName = document.createElement("td");
-      let cellNameText = document.createTextNode(scoreListItem.name);
-      let cellScore = document.createElement("td");
-      let cellScoreNum = document.createTextNode(scoreListItem.newScore);
+      let nameCell = document.createElement("td");
+      let nameCellText = document.createTextNode(scoreListItem.name);
+      let scoreCell = document.createElement("td");
+      let scoreCellNum = document.createTextNode(scoreListItem.newScore);
 
       tr.setAttribute("tr-index", i);
       document.getElementById("highScores").appendChild(tr);
-      tr.appendChild(cellName);
-      cellName.appendChild(cellNameText);
-      tr.appendChild(cellName);
-      cellScore.appendChild(cellScoreNum);
+      tr.appendChild(nameCell);
+      nameCell.appendChild(nameCellText);
+      tr.appendChild(scoreCell);
+      scoreCell.appendChild(scoreCellNum);
     }
   }
 }
+
+clearScores.addEventListener("click", () => {
+  clearAll();
+  window.location.href = "highScores.html";
+});
