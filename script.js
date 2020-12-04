@@ -129,6 +129,19 @@ function endGame() {
   });
 }
 
+// ***************** local storage function ***************
+
+function savedScores(finalScore) {
+  scoreArr = JSON.parse(localStorage.getItem("scores"));
+  if (scoreArr === null) {
+    scoreList.push(finalScore);
+    localStorage.setItem("scores", JSON.stringify(scoreList));
+  } else {
+    scoreArr.push(finalScore);
+    localStorage.setItem("scores", JSON.stringify(scoreArr));
+  }
+}
+
 // Add Boolean globally to hide the answer buttons on page load
 answers.hidden = true;
 
