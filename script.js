@@ -115,6 +115,9 @@ function endGame() {
   document.getElementById("score").textContent = `Your score is: ${score}`;
   document.body.children[1].appendChild(inputEl);
   document.getElementsByTagName("input")[0].setAttribute("id", "input-field");
+
+  document.body.children[1].appendChild(submitBtn);
+  submitBtn.textContent = "Submit";
 }
 
 // Add Boolean globally to hide the answer buttons on page load
