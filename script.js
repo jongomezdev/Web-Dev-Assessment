@@ -121,7 +121,11 @@ function endGame() {
   document.getElementsByTagName("button")[0].setAttribute("id", "btn");
   submitBtn.addEventListener("click", function (e) {
     e.preventDefault();
-    alert("You Clicked Me!!!");
+    let finalScore = new Object();
+    finalScore.name = inputEl.value.trim();
+    finalScore.newScore = score;
+    savedScores(finalScore);
+    window.location.href = "highScores.html";
   });
 }
 
