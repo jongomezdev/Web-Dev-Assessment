@@ -100,11 +100,21 @@ function choice3() {
 
 // **************** End Game Function ********************
 function endGame() {
+  let scoreEl = document.createElement("h1");
+  let inputEl = document.createElement("input");
+  let submitBtn = document.createElement("button");
+
   score += 20;
 
   answers.classList.add("hide");
   messageDiv.classList.add("hide");
   questionText.textContent = "Game Over";
+
+  document.body.children[1].appendChild(scoreEl);
+  document.getElementsByTagName("h1")[0].setAttribute("id", "score");
+  document.getElementById("score").textContent = `Your score is: ${score}`;
+  document.body.children[1].appendChild(inputEl);
+  document.getElementsByTagName("input")[0].setAttribute("id", "input-field");
 }
 
 // Add Boolean globally to hide the answer buttons on page load
