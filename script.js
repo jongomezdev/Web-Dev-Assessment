@@ -118,6 +118,11 @@ function endGame() {
 
   document.body.children[1].appendChild(submitBtn);
   submitBtn.textContent = "Submit";
+  document.getElementsByTagName("button")[0].setAttribute("id", "btn");
+  submitBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    alert("You Clicked Me!!!");
+  });
 }
 
 // Add Boolean globally to hide the answer buttons on page load
